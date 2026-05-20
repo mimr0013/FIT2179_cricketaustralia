@@ -22,7 +22,7 @@
         },
         {
             "data": {
-                "url": "data/wins_by_country.csv",
+                "url": "wins_by_country.csv",
                 "format": {"type": "csv"}
             },
             "mark": {
