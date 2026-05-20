@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Australia's Test Match Wins by Country",
+    "width": 600,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "layer": [
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+                "format": {
+                    "type": "topojson",
+                    "feature": "ne_110m_admin_0_countries"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#e8f5e9",
+                "stroke": "white",
+                "strokeWidth": 0.5
+            }
+        },
+        {
+            "data": {
+                "url": "data/wins_by_country.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": {
+                "type": "circle",
+                "opacity": 0.8,
+                "color": "#1b5e20"
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "longitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "latitude",
+                    "type": "quantitative"
+                },
+                "size": {
+                    "field": "wins",
+                    "type": "quantitative",
+                    "title": "Test Wins",
+                    "scale": {"range": [50, 2000]}
+                },
+                "tooltip": [
+                    {"field": "country", "title": "Country"},
+                    {"field": "wins", "title": "Test Wins"},
+                    {"field": "matches", "title": "Total Matches"}
+                ]
+            }
+        }
+    ]
+}
