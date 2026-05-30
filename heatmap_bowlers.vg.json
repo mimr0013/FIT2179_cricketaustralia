@@ -7,7 +7,7 @@
   },
   "width": "container",
   "height": 200,
-  "data": {"url": "data/bowlers_vs_opp.csv", "format": {"type": "csv"}},
+  "data": {"url": "bowlers_vs_opp.csv", "format": {"type": "csv"}},
   "encoding": {
     "x": {
       "field": "opponent", "type": "nominal", "title": null,
