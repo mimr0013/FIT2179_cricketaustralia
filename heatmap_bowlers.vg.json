@@ -5,7 +5,7 @@
     "subtitle": "Test wickets taken by Australia's modern spin and pace leaders against each nation. Darker = more wickets.",
     "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
   },
-  "width": "container",
+  "width": "700",
   "height": 200,
   "data": {"url": "bowlers_vs_opp.csv", "format": {"type": "csv"}},
   "encoding": {
