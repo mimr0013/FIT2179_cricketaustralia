@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Who Australia Beats — and Who Fights Back",
+    "subtitle": "Wins (right) versus losses (left) against each Test nation, all-time",
+    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+  },
+  "width": "container",
+  "height": 320,
+  "data": {"url": "data/results_by_opp.csv", "format": {"type": "csv"}},
+  "transform": [
+    {"calculate": "datum.won", "as": "wins_pos"},
+    {"calculate": "-datum.lost", "as": "losses_neg"},
+    {"fold": ["wins_pos", "losses_neg"], "as": ["result", "value"]},
+    {"calculate": "datum.result === 'wins_pos' ? 'Wins' : 'Losses'", "as": "outcome"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "opponent", "type": "nominal", "title": null,
+      "sort": {"field": "won", "op": "max", "order": "descending"},
+      "axis": {"labelFontSize": 12}
+    },
+    "x": {
+      "field": "value", "type": "quantitative",
+      "title": "Losses  ←    matches    →  Wins",
+      "axis": {"labelExpr": "abs(datum.value)"}
+    },
+    "color": {
+      "field": "outcome", "type": "nominal", "title": null,
+      "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadius": 2},
+      "encoding": {
+        "tooltip": [
+          {"field": "opponent", "title": "Opponent"},
+          {"field": "won", "title": "Won"},
+          {"field": "lost", "title": "Lost"},
+          {"field": "draw", "title": "Drawn"},
+          {"field": "matches", "title": "Played"},
+          {"field": "win_pct", "title": "Win %"}
+        ]
+      }
+    }
+  ],
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
+}
