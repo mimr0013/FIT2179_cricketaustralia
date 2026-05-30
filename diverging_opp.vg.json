@@ -7,7 +7,7 @@
   },
   "width": "container",
   "height": 320,
-  "data": {"url": "data/results_by_opp.csv", "format": {"type": "csv"}},
+  "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
   "transform": [
     {"calculate": "datum.won", "as": "wins_pos"},
     {"calculate": "-datum.lost", "as": "losses_neg"},
