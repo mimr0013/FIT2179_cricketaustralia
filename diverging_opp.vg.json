@@ -17,7 +17,7 @@
   "encoding": {
     "y": {
       "field": "opponent", "type": "nominal", "title": null,
-      "sort": {"field": "won", "op": "max", "order": "descending"},
+      "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"],
       "axis": {"labelFontSize": 12}
     },
     "x": {
