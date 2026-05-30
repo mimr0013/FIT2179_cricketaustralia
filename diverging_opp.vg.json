@@ -5,7 +5,7 @@
     "subtitle": "Wins (right) versus losses (left) against each Test nation, all-time",
     "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
   },
-  "width": "container",
+  "width": "700",
   "height": 320,
   "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
   "transform": [
