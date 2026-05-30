@@ -12,7 +12,7 @@
     "subtitle": "Each bar is a captain's tenure, placed in time and coloured by win rate. Only captains with five or more Tests shown.",
     "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
   },
-  "width": "container",
+  "width": 400,
   "height": 460,
   "data": {"url": "captains.csv", "format": {"type": "csv"}},
   "transform": [
