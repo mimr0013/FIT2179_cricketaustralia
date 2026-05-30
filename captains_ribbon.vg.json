@@ -7,7 +7,7 @@
   },
   "width": "container",
   "height": 460,
-  "data": {"url": "data/captains.csv", "format": {"type": "csv"}},
+  "data": {"url": "captains.csv", "format": {"type": "csv"}},
   "transform": [
     {"calculate": "toNumber(slice(datum.span, 0, 4))", "as": "start_year"},
     {"calculate": "toNumber(slice(datum.span, 5, 9))", "as": "end_year"},
