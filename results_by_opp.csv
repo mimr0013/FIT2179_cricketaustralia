@@ -1,0 +1,10 @@
+opponent,map_name,span,matches,won,lost,draw,tied,win_pct,longitude,latitude
+Bangladesh,Bangladesh,2003-2017,6,5,1,0,0,83.33,90.3563,23.685
+England,United Kingdom,1877-2026,366,156,113,97,0,42.62,-1.1743,52.3555
+India,India,1947-2025,112,48,33,30,1,43.30,78.9629,20.5937
+New Zealand,New Zealand,1946-2024,62,36,8,18,0,58.06,174.886,-40.9006
+Pakistan,Pakistan,1956-2024,72,37,15,20,0,51.38,69.3451,30.3753
+South Africa,South Africa,1902-2025,102,54,27,21,0,52.94,22.9375,-30.5595
+Sri Lanka,Sri Lanka,1983-2025,35,22,5,8,0,62.85,80.7718,7.8731
+West Indies,Jamaica,1930-2025,123,64,33,25,1,52.43,-77.2975,18.1096
+Zimbabwe,Zimbabwe,1999-2003,3,3,0,0,0,100.00,29.1549,-19.0154
