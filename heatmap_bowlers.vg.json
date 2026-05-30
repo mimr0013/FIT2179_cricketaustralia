@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Three Greats, Nine Opponents",
+    "subtitle": "Test wickets taken by Australia's modern spin and pace leaders against each nation. Darker = more wickets.",
+    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+  },
+  "width": "container",
+  "height": 200,
+  "data": {"url": "data/bowlers_vs_opp.csv", "format": {"type": "csv"}},
+  "encoding": {
+    "x": {
+      "field": "opponent", "type": "nominal", "title": null,
+      "sort": ["England", "India", "South Africa", "West Indies", "New Zealand", "Pakistan", "Sri Lanka", "Bangladesh", "Zimbabwe"],
+      "axis": {"labelAngle": -40, "labelFontSize": 11}
+    },
+    "y": {
+      "field": "bowler", "type": "nominal", "title": null,
+      "sort": ["Shane Warne", "Nathan Lyon", "Pat Cummins"],
+      "axis": {"labelFontSize": 12}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#fffdf8", "strokeWidth": 3},
+      "encoding": {
+        "color": {
+          "field": "wickets", "type": "quantitative", "title": "Wickets",
+          "scale": {"scheme": "teals", "domain": [0, 200]},
+          "legend": {"orient": "right", "gradientLength": 120}
+        },
+        "tooltip": [
+          {"field": "bowler", "title": "Bowler"},
+          {"field": "opponent", "title": "Opponent"},
+          {"field": "wickets", "title": "Wickets"},
+          {"field": "matches", "title": "Matches"},
+          {"field": "avg", "title": "Average"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold"},
+      "encoding": {
+        "text": {"field": "wickets", "type": "quantitative"},
+        "color": {
+          "condition": {"test": "datum.wickets > 100", "value": "#ffffff"},
+          "value": "#1f3a3f"
+        }
+      }
+    }
+  ],
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}, "axis": {"domain": false, "ticks": false}}
+}
