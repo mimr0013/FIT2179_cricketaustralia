@@ -25,7 +25,7 @@
         {
           "lookup": "properties.NAME",
           "from": {
-            "data": {"url": "data/results_by_opp.csv", "format": {"type": "csv"}},
+            "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
             "key": "map_name",
             "fields": ["win_pct", "won", "lost", "draw", "matches", "opponent"]
           }
