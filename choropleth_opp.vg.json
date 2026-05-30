@@ -5,7 +5,7 @@
     "subtitle": "Share of Tests Australia has won against each nation. Deeper colour = greater dominance.",
     "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
   },
-  "width": "800",
+  "width": 800,
   "height": 420,
   "projection": {"type": "equalEarth"},
   "layer": [
