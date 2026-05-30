@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "A Century of Captains",
+    "subtitle": "Each bar is a captain's tenure, placed in time and coloured by win rate. Only captains with five or more Tests shown.",
+    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+  },
+  "width": "container",
+  "height": 460,
+  "data": {"url": "data/captains.csv", "format": {"type": "csv"}},
+  "transform": [
+    {"calculate": "toNumber(slice(datum.span, 0, 4))", "as": "start_year"},
+    {"calculate": "toNumber(slice(datum.span, 5, 9))", "as": "end_year"},
+    {"calculate": "datum.end_year == datum.start_year ? datum.end_year + 1 : datum.end_year", "as": "end_plot"},
+    {"filter": "datum.matches >= 5"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "captain", "type": "nominal", "title": null,
+      "sort": {"field": "start_year"},
+      "axis": {"labelFontSize": 10}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "height": 11, "cornerRadius": 3},
+      "encoding": {
+        "x": {
+          "field": "start_year", "type": "quantitative",
+          "scale": {"domain": [1875, 2030]},
+          "axis": {"title": null, "format": "d", "grid": true, "tickCount": 8}
+        },
+        "x2": {"field": "end_plot"},
+        "color": {
+          "field": "win_pct", "type": "quantitative", "title": "Win %",
+          "scale": {"scheme": "yellowgreen", "domain": [0, 75]},
+          "legend": {"orient": "top-right", "gradientLength": 100}
+        },
+        "tooltip": [
+          {"field": "captain", "title": "Captain"},
+          {"field": "span", "title": "Tenure"},
+          {"field": "matches", "title": "Tests"},
+          {"field": "won", "title": "Won"},
+          {"field": "lost", "title": "Lost"},
+          {"field": "win_pct", "title": "Win %"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.win_pct >= 60"}],
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 9, "fontWeight": "bold", "color": "#15462b"},
+      "encoding": {
+        "x": {"field": "end_plot", "type": "quantitative"},
+        "text": {"field": "win_pct", "type": "quantitative", "format": ".0f"}
+      }
+    }
+  ],
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
+}
