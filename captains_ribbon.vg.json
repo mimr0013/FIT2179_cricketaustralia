@@ -3,7 +3,10 @@
   "title": {
     "text": "A Century of Captains",
     "subtitle": "Each bar is a captain's tenure, placed in time and coloured by win rate. Only captains with five or more Tests shown.",
-    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#565b66"
   },
   "width": 700,
   "height": 460,
@@ -23,7 +26,7 @@
       "encoding": {
         "x": {"field": "start_year", "type": "quantitative", "scale": {"domain": [1875, 2030]}, "axis": {"title": null, "format": "d", "grid": true, "tickCount": 8}},
         "x2": {"field": "end_plot"},
-        "color": {"field": "win_pct", "type": "quantitative", "title": "Win %", "scale": {"scheme": "yellowgreen", "domain": [0, 75]}, "legend": {"orient": "top-right", "gradientLength": 100}},
+        "color": {"field": "win_pct", "type": "quantitative", "title": "Win %", "scale": {"scheme": "greens", "domain": [0, 75]}, "legend": {"orient": "top-right", "gradientLength": 100}},
         "tooltip": [
           {"field": "captain", "title": "Captain"},
           {"field": "span", "title": "Tenure"},
@@ -43,10 +46,10 @@
       }
     },
     {
-      "data": {"values": [{"y": "SR Waugh", "note": "Waugh & Ponting:"}, {"y": "RT Ponting", "note": "the golden era"}]},
-      "mark": {"type": "text", "align": "left", "dx": 40, "fontSize": 10, "fontStyle": "italic", "color": "#565b66"},
+      "data": {"values": [{"x": 1999, "y": "SR Waugh", "note": "The golden era"}]},
+      "mark": {"type": "text", "align": "right", "dx": -10, "fontSize": 11, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
       "encoding": {
-        "x": {"datum": 2030, "type": "quantitative"},
+        "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "nominal"},
         "text": {"field": "note"}
       }
