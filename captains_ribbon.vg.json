@@ -15,27 +15,15 @@
     {"filter": "datum.matches >= 5"}
   ],
   "encoding": {
-    "y": {
-      "field": "captain", "type": "nominal", "title": null,
-      "sort": {"field": "start_year"},
-      "axis": {"labelFontSize": 10}
-    }
+    "y": {"field": "captain", "type": "nominal", "title": null, "sort": {"field": "start_year"}, "axis": {"labelFontSize": 10}}
   },
   "layer": [
     {
       "mark": {"type": "bar", "height": 11, "cornerRadius": 3},
       "encoding": {
-        "x": {
-          "field": "start_year", "type": "quantitative",
-          "scale": {"domain": [1875, 2030]},
-          "axis": {"title": null, "format": "d", "grid": true, "tickCount": 8}
-        },
+        "x": {"field": "start_year", "type": "quantitative", "scale": {"domain": [1875, 2030]}, "axis": {"title": null, "format": "d", "grid": true, "tickCount": 8}},
         "x2": {"field": "end_plot"},
-        "color": {
-          "field": "win_pct", "type": "quantitative", "title": "Win %",
-          "scale": {"scheme": "yellowgreen", "domain": [0, 75]},
-          "legend": {"orient": "top-right", "gradientLength": 100}
-        },
+        "color": {"field": "win_pct", "type": "quantitative", "title": "Win %", "scale": {"scheme": "yellowgreen", "domain": [0, 75]}, "legend": {"orient": "top-right", "gradientLength": 100}},
         "tooltip": [
           {"field": "captain", "title": "Captain"},
           {"field": "span", "title": "Tenure"},
@@ -52,6 +40,15 @@
       "encoding": {
         "x": {"field": "end_plot", "type": "quantitative"},
         "text": {"field": "win_pct", "type": "quantitative", "format": ".0f"}
+      }
+    },
+    {
+      "data": {"values": [{"y": "SR Waugh", "note": "Waugh & Ponting:"}, {"y": "RT Ponting", "note": "the golden era"}]},
+      "mark": {"type": "text", "align": "left", "dx": 40, "fontSize": 10, "fontStyle": "italic", "color": "#565b66"},
+      "encoding": {
+        "x": {"datum": 2030, "type": "quantitative"},
+        "y": {"field": "y", "type": "nominal"},
+        "text": {"field": "note"}
       }
     }
   ],
