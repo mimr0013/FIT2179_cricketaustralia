@@ -8,7 +8,7 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#565b66"
   },
-  "width": 650,
+  "width": 250,
   "height": 360,
   "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
   "transform": [
