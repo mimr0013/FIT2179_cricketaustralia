@@ -13,7 +13,7 @@
     "subtitlePadding": 6,
     "offset": 14
   },
-  "width": "container",
+  "width": 250,
   "height": 380,
   "data": {"url": "batting_extremes.csv", "format": {"type": "csv"}},
   "layer": [
