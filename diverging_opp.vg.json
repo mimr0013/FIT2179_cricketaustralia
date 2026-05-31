@@ -1,13 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Who Australia Beats and Who Fights Back",
-    "subtitle": "Wins right versus losses left against each Test nation",
-    "anchor": "start",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#565b66"
-  },
   "width": 250,
   "height": 360,
   "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
@@ -20,7 +12,7 @@
   ],
   "encoding": {
     "y": {"field": "opponent", "type": "nominal", "title": null, "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"]},
-    "x": {"field": "value", "type": "quantitative", "title": "Losses < Matches > Wins", "axis": {"labelExpr": "abs(datum.value)"}}
+    "x": {"field": "value", "type": "quantitative", "title": "Losses < Matches > Wins", "scale": {"domain": [-130, 170]}, "axis": {"labelExpr": "abs(datum.value)"}}
   },
   "layer": [
     {
@@ -31,26 +23,27 @@
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Won"},
           {"field": "lost", "title": "Lost"},
-          {"field": "matches", "title": "Played"}
+          {"field": "matches", "title": "Played"},
+          {"field": "win_pct", "title": "Win %"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.value >= 0"}],
-      "mark": {"type": "text", "align": "left", "dx": 4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
+      "transform": [{"filter": "datum.value >= 5"}],
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
       "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
     },
     {
-      "transform": [{"filter": "datum.value < 0"}],
-      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
+      "transform": [{"filter": "datum.value <= -5"}],
+      "mark": {"type": "text", "align": "right", "dx": -6, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
       "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
     },
     {
       "transform": [
-        {"filter": "datum.outcome === 'Wins' && (datum.opponent === 'India' || datum.opponent === 'West Indies')"},
+        {"filter": "datum.outcome === 'Wins' && (datum.opponent === 'West Indies' || datum.opponent === 'India')"},
         {"calculate": "datum.opponent === 'India' ? 'Toughest modern rival' : 'Largest win surplus'", "as": "note"}
       ],
-      "mark": {"type": "text", "align": "left", "dx": 30, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
+      "mark": {"type": "text", "align": "left", "dx": 34, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
       "encoding": {"text": {"field": "note"}}
     }
   ],
