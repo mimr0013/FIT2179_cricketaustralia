@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "From Triumph to Collapse: Australia's Batting Extremes",
+    "subtitle": "The five highest and five lowest Test innings totals in Australian history. The gap between 758 and 36 spans the full drama of Test cricket.",
+    "anchor": "start",
+    "font": "Barlow Condensed, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 600,
+    "subtitleFont": "Spectral, Georgia, serif",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a6b5d",
+    "subtitlePadding": 6,
+    "offset": 14
+  },
+  "width": 520,
+  "height": 380,
+  "data": {"url": "batting_extremes.csv", "format": {"type": "csv"}},
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#cbd2c5", "strokeWidth": 1, "strokeDash": [3, 3]},
+      "encoding": {"y": {"datum": 400}}
+    },
+    {
+      "mark": {"type": "rule", "strokeWidth": 2.5, "opacity": 0.85},
+      "encoding": {
+        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}, "axis": {"title": null, "labelAngle": -35, "labelFontSize": 10, "labelColor": "#4a564c"}},
+        "y": {"field": "score", "type": "quantitative", "axis": {"title": "Innings total (runs)", "titleFont": "Barlow Condensed, sans-serif", "titleFontSize": 13, "grid": false, "labelColor": "#4a564c"}},
+        "y2": {"datum": 0},
+        "color": {"field": "type", "type": "nominal", "scale": {"domain": ["Highest", "Lowest"], "range": ["#1f6b3f", "#c8553d"]}}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 200, "stroke": "#fffdf8", "strokeWidth": 1.5, "opacity": 1},
+      "encoding": {
+        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
+        "y": {"field": "score", "type": "quantitative"},
+        "color": {"field": "type", "type": "nominal", "title": "Innings type", "scale": {"domain": ["Highest", "Lowest"], "range": ["#1f6b3f", "#c8553d"]}, "legend": {"orient": "top-right", "labelFont": "Spectral, Georgia, serif", "titleFont": "Barlow Condensed, sans-serif"}},
+        "tooltip": [
+          {"field": "score", "title": "Score"},
+          {"field": "opposition", "title": "Opponent"},
+          {"field": "venue", "title": "Venue"},
+          {"field": "city", "title": "City"},
+          {"field": "year", "title": "Year"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -13, "fontSize": 10, "fontWeight": "bold", "color": "#20242e", "font": "Barlow Condensed, sans-serif"},
+      "encoding": {
+        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
+        "y": {"field": "score", "type": "quantitative"},
+        "text": {"field": "score", "type": "quantitative"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.score == 758"}],
+      "mark": {"type": "text", "align": "left", "dx": 12, "dy": 4, "fontSize": 10, "fontStyle": "italic", "color": "#1f6b3f", "font": "Spectral, Georgia, serif"},
+      "encoding": {
+        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
+        "y": {"field": "score", "type": "quantitative"},
+        "text": {"value": "Record high, vs WI 1955"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.score == 36"}],
+      "mark": {"type": "text", "align": "right", "dx": -10, "dy": -2, "fontSize": 10, "fontStyle": "italic", "color": "#c8553d", "font": "Spectral, Georgia, serif"},
+      "encoding": {
+        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
+        "y": {"field": "score", "type": "quantitative"},
+        "text": {"value": "All-out for 36, vs England 1902"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Spectral, Georgia, serif",
+    "view": {"stroke": null},
+    "axis": {"domainColor": "#cbd2c5", "tickColor": "#cbd2c5"}
+  }
+}
