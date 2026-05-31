@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Wheel of Victory",
+    "subtitle": "Australia's Test wins against each opponent as a radial bar — longer, brighter arcs mean more wins. Hover any arc for the full record.",
+    "anchor": "start", "font": "Barlow Condensed, sans-serif", "fontSize": 19, "fontWeight": 600,
+    "subtitleFont": "Spectral, Georgia, serif", "subtitleFontSize": 12, "subtitleColor": "#5a6b5d", "subtitlePadding": 6, "offset": 14
+  },
+  "width": 420,
+  "height": 420,
+  "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+  "mark": {"type": "arc", "innerRadius": 40, "stroke": "#fffdf8", "strokeWidth": 1.5, "cornerRadius": 3},
+  "encoding": {
+    "theta": {"field": "opponent", "type": "nominal", "sort": {"field": "won", "order": "descending"}, "title": null},
+    "radius": {"field": "won", "type": "quantitative", "scale": {"zero": true, "rangeMin": 40}, "title": "Wins"},
+    "color": {"field": "won", "type": "quantitative", "title": "Test wins", "scale": {"scheme": "greens"}, "legend": {"orient": "right", "gradientLength": 120}},
+    "tooltip": [
+      {"field": "opponent", "title": "Opponent"},
+      {"field": "won", "title": "Wins"},
+      {"field": "lost", "title": "Losses"},
+      {"field": "matches", "title": "Played"},
+      {"field": "win_pct", "title": "Win %"}
+    ]
+  },
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
+}
