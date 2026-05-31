@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Australia Test Win/Loss Ratio by Decade",
-  "width": 300,
+  "width": 250,
   "height": 250,
   "data": {"url": "winloss.csv", "format": {"type": "csv"}},
   "layer": [
