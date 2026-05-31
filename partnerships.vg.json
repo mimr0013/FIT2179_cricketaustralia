@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Stands That Built Records",
+    "subtitle": "Australia's five highest Test partnerships. Each bar is one stand; gold marks the three featuring Sir Donald Bradman.",
+    "anchor": "start", "font": "Barlow Condensed, sans-serif", "fontSize": 19, "fontWeight": 600,
+    "subtitleFont": "Spectral, Georgia, serif", "subtitleFontSize": 12, "subtitleColor": "#5a6b5d", "subtitlePadding": 6, "offset": 14
+  },
+  "width": 560,
+  "height": 300,
+  "data": {"url": "partnerships_custom.csv", "format": {"type": "csv"}},
+  "encoding": {
+    "y": {"field": "label", "type": "nominal", "sort": ["Ponsford & Bradman (1934, The Oval)", "Voges & Marsh (2015)", "Barnes & Bradman (1946)", "Ponsford & Bradman (1934, Leeds)", "Ponting & Clarke (2012)"], "axis": {"title": null, "labelFontSize": 10, "labelColor": "#20242e", "labelFont": "Spectral, Georgia, serif"}},
+    "x": {"field": "runs", "type": "quantitative", "scale": {"domain": [0, 520]}, "axis": {"title": "Partnership runs", "titleFont": "Barlow Condensed, sans-serif", "titleFontSize": 13, "labelColor": "#4a564c", "grid": false}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadius": 4, "height": 22},
+      "encoding": {
+        "color": {"field": "has_bradman", "type": "nominal", "title": "Featuring Bradman", "scale": {"domain": ["Yes", "No"], "range": ["#e2a228", "#7a4a78"]}, "legend": {"orient": "bottom-right", "labelFont": "Spectral, Georgia, serif", "titleFont": "Barlow Condensed, sans-serif"}},
+        "tooltip": [
+          {"field": "batsman_1", "title": "Batsman 1"},
+          {"field": "batsman_2", "title": "Batsman 2"},
+          {"field": "runs", "title": "Runs"},
+          {"field": "opposition", "title": "Opponent"},
+          {"field": "venue", "title": "Venue"},
+          {"field": "year", "title": "Year"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 10, "fontWeight": "bold", "color": "#ffffff", "font": "Barlow Condensed, sans-serif"},
+      "encoding": {"x": {"datum": 0}, "text": {"field": "batsman_1"}}
+    },
+    {
+      "mark": {"type": "text", "align": "right", "dx": -6, "fontSize": 10, "fontWeight": "bold", "color": "#fffdf8", "font": "Barlow Condensed, sans-serif"},
+      "encoding": {"text": {"field": "batsman_2"}}
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 12, "fontWeight": "bold", "color": "#20242e", "font": "Barlow Condensed, sans-serif"},
+      "encoding": {"text": {"field": "runs", "type": "quantitative"}}
+    }
+  ],
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}, "axis": {"domainColor": "#cbd2c5", "tickColor": "#cbd2c5"}}
+}
