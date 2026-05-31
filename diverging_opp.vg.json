@@ -8,7 +8,7 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#565b66"
   },
-  "width": 700,
+  "width": 560,
   "height": 360,
   "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
   "transform": [
@@ -26,7 +26,7 @@
     {
       "mark": {"type": "bar", "cornerRadius": 2},
       "encoding": {
-        "color": {"field": "outcome", "type": "nominal", "title": null, "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}},
+        "color": {"field": "outcome", "type": "nominal", "title": null, "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}, "legend": {"orient": "bottom"}},
         "tooltip": [
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Won"},
@@ -47,10 +47,10 @@
     },
     {
       "transform": [
-        {"filter": "datum.outcome === 'Wins' && (datum.opponent === 'England' || datum.opponent === 'India' || datum.opponent === 'West Indies')"},
-        {"calculate": "datum.opponent === 'England' ? 'Historic Ashes rivalry' : datum.opponent === 'India' ? 'Toughest modern rival' : 'Largest win surplus'", "as": "note"}
+        {"filter": "datum.outcome === 'Wins' && (datum.opponent === 'India' || datum.opponent === 'West Indies')"},
+        {"calculate": "datum.opponent === 'India' ? 'Toughest modern rival' : 'Largest win surplus'", "as": "note"}
       ],
-      "mark": {"type": "text", "align": "left", "dx": 35, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
+      "mark": {"type": "text", "align": "left", "dx": 30, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
       "encoding": {"text": {"field": "note"}}
     }
   ],
