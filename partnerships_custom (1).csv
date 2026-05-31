@@ -1,0 +1,6 @@
+pid,label,runs,batsman_1,batsman_2,opposition,venue,year,has_bradman
+P1,"Ponsford & Bradman (1934, The Oval)",451,Bill Ponsford,Don Bradman,England,The Oval,1934,Yes
+P2,Voges & Marsh (2015),449,Adam Voges,Shaun Marsh,West Indies,Bellerive Oval,2015,No
+P3,Barnes & Bradman (1946),405,Sid Barnes,Don Bradman,England,Sydney,1946,Yes
+P4,"Ponsford & Bradman (1934, Leeds)",388,Bill Ponsford,Don Bradman,England,Headingley,1934,Yes
+P5,Ponting & Clarke (2012),386,Ricky Ponting,Michael Clarke,India,Adelaide Oval,2012,No
