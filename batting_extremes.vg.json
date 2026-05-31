@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "From Triumph to Collapse: Australia's Batting Extremes",
-    "subtitle": "The five highest and five lowest Test innings totals in Australian history. The gap between 758 and 36 spans the full drama of Test cricket.",
+    "subtitle": "The five highest and five lowest Test innings totals in Australian history.",
     "anchor": "start",
     "font": "Barlow Condensed, sans-serif",
     "fontSize": 19,
@@ -13,7 +13,7 @@
     "subtitlePadding": 6,
     "offset": 14
   },
-  "width": 250,
+  "width": 300,
   "height": 380,
   "data": {"url": "batting_extremes.csv", "format": {"type": "csv"}},
   "layer": [
@@ -51,24 +51,6 @@
         "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
         "y": {"field": "score", "type": "quantitative"},
         "text": {"field": "score", "type": "quantitative"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.score == 758"}],
-      "mark": {"type": "text", "align": "left", "dx": 12, "dy": 4, "fontSize": 10, "fontStyle": "italic", "color": "#1f6b3f", "font": "Spectral, Georgia, serif"},
-      "encoding": {
-        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
-        "y": {"field": "score", "type": "quantitative"},
-        "text": {"value": "Record high, vs WI 1955"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.score == 36"}],
-      "mark": {"type": "text", "align": "right", "dx": -10, "dy": -2, "fontSize": 10, "fontStyle": "italic", "color": "#c8553d", "font": "Spectral, Georgia, serif"},
-      "encoding": {
-        "x": {"field": "label", "type": "nominal", "sort": {"field": "score", "order": "descending"}},
-        "y": {"field": "score", "type": "quantitative"},
-        "text": {"value": "All-out for 36, vs England 1902"}
       }
     }
   ],
