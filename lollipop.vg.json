@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Australia's All-Time Test Wicket Takers",
-  "width": 300,
+  "width": 250,
   "height": 280,
   "data": {"url": "bowlers.csv", "format": {"type": "csv"}},
   "encoding": {
