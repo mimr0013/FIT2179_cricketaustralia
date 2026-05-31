@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "From Triumph to Collapse: Australia's Batting Extremes",
     "subtitle": "The five highest and five lowest Test innings totals in Australian history.",
     "anchor": "start",
     "font": "Barlow Condensed, sans-serif",
