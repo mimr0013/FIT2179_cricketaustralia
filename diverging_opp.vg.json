@@ -1,9 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Who Australia Beats — and Who Fights Back",
-    "subtitle": "Wins (right) versus losses (left) against each Test nation, all-time",
-    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+    "text": "Who Australia Beats and Who Fights Back",
+    "subtitle": "Wins right versus losses left against each Test nation",
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#565b66"
   },
   "width": 700,
   "height": 360,
@@ -17,7 +20,7 @@
   ],
   "encoding": {
     "y": {"field": "opponent", "type": "nominal", "title": null, "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"]},
-    "x": {"field": "value", "type": "quantitative", "title": "Losses  ←    matches    →  Wins", "axis": {"labelExpr": "abs(datum.value)"}}
+    "x": {"field": "value", "type": "quantitative", "title": "Losses - matches - Wins", "axis": {"labelExpr": "abs(datum.value)"}}
   },
   "layer": [
     {
@@ -28,7 +31,9 @@
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Won"},
           {"field": "lost", "title": "Lost"},
-          {"field": "matches", "title": "Played"}
+          {"field": "draw", "title": "Drawn"},
+          {"field": "matches", "title": "Played"},
+          {"field": "win_pct", "title": "Win %"}
         ]
       }
     },
