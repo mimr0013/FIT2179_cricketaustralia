@@ -56,3 +56,16 @@ body {
     flex: 1;
     margin-bottom: 0;
 }
+/* Chart beside text two variants */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.split-text-left  { grid-template-columns: 1fr 1fr; }   /* text | chart */
+.split-text-right { grid-template-columns: 1fr 1fr; }   /* chart | text */
+
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; }
+}
