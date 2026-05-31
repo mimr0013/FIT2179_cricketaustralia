@@ -25,3 +25,11 @@ vegaEmbed("#choropleth_opp", vg_6).then(function(result) {
 var vg_7 = "captains_ribbon.vg.json";
 vegaEmbed("#captains_ribbon", vg_7).then(function(result) {
 }).catch(console.error);
+
+var vg_6 = "partnerships.vg.json";
+vegaEmbed("#partnerships", vg_8).then(function(result) {
+}).catch(console.error);
+
+var vg_7 = "batting_extremes.vg.json";
+vegaEmbed("#batting_extremes", vg_9).then(function(result) {
+}).catch(console.error);
