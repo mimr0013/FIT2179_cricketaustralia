@@ -14,13 +14,11 @@
       "encoding": {"x": {"datum": 0}, "x2": {"field": "wickets"}}
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 180, "stroke": "#ffffff", "strokeWidth": 1},
+      "mark": {"type": "point", "filled": true, "size": 180, "color": "#2a7f8e", "stroke": "#ffffff", "strokeWidth": 1},
       "encoding": {
-        "color": {"field": "type", "type": "nominal", "title": "Type", "scale": {"domain": ["Pace", "Spin"], "range": ["#2a7f8e", "#e2a228"]}},
         "tooltip": [
           {"field": "bowler", "title": "Bowler"},
-          {"field": "wickets", "title": "Wickets"},
-          {"field": "type", "title": "Type"}
+          {"field": "wickets", "title": "Wickets"}
         ]
       }
     },
