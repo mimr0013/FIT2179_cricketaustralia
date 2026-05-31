@@ -22,14 +22,14 @@
             <h2>Australia's greatest bowlers</h2>
             <p>Shane Warne leads Australia's all-time Test wicket
             takers with 708 wickets. Data sourced from
-            ESPN Cricinfo Statsguru.</p>
+            ESPNcricinfo Statsguru.</p>
             <div id="lollipop"></div>
         </div>
         <div class="section">
             <h2>A century of dominance</h2>
             <p>Australia's Test win/loss ratio across the decades
             reveals two golden eras. Data sourced from
-            ESPN Cricinfo Statsguru.</p>
+            ESPNcricinfo Statsguru.</p>
             <div id="linechart"></div>
         </div>
     </div>
@@ -39,9 +39,10 @@
         <p>Each circle marks a country where Australia has played Test cricket.
         The size of the circle shows how many Test matches Australia has won there.
         Map topology sourced from Natural Earth.
-        Match data sourced from ESPN Cricinfo Statsguru.</p>
+        Match data sourced from ESPNcricinfo Statsguru.</p>
         <div id="symbolmap"></div>
     </div>
+
     <div class="section">
         <h2>Three greats, nine opponents</h2>
         <p>Warne, Lyon and Cummins carried Australia's attack for three decades.
@@ -49,22 +50,28 @@
         Data sourced from ESPNcricinfo Statsguru.</p>
         <div id="heatmap_bowlers"></div>
     </div>
+
     <div class="section">
         <h2>A century of captains</h2>
         <p>Each bar is a captain's tenure, placed in time and coloured by win rate.
         The brightest bars — Steve Waugh, Ricky Ponting, Pat Cummins — mark
-        Australia's eras of dominance.</p>
+        Australia's eras of dominance. Data sourced from ESPNcricinfo Statsguru.</p>
         <div id="captains_ribbon"></div>
     </div>
-    <div class="section">
-        <h2>The monumental innings</h2>
-        <p>Australia's five highest individual Test scores. Gold triangles mark
-        not-out knocks.</p>
-        <div id="batting_extremes"></div>
-    </div>
-  
 
-    <div class="section"></div>
+    <div class="section split">
+        <div id="batting_extremes"></div>
+        <div>
+            <h2>From triumph to collapse</h2>
+            <p>Australian batting has known both glory and disaster: a towering 758
+            against the West Indies in 1955, down to an infamous collapse for just 36
+            against England in 1902. The dashed line marks 400 — a total Australia has
+            passed only at its peak. Every one of its record lows came against England
+            or South Africa. Data sourced from Wikipedia.</p>
+        </div>
+    </div>
+
+    <div class="section">
         <h2>Two at the crease</h2>
         <p>Test cricket is built not on individuals alone, but on partnerships —
         two batsmen building an innings together. Australia's five greatest stands
@@ -77,42 +84,44 @@
         <p>That so many of these records date to the 1930s and 40s speaks to an era
         when Australia's batting, led by Bradman, simply overwhelmed opponents.
         Data sourced from Wikipedia.</p>
+        <div id="partnerships"></div>
     </div>
+
     <div class="section split">
-      <div id="diverging_opp"></div>
-      <div>
-        <h2>Who Australia beats — and who fights back</h2>
-        <p>This diverging bar chart compares Australia's all-time Test wins and
-        losses against each opponent — wins extend right, losses left. It highlights
-        Australia's overall dominance, particularly against England, where Australia
-        has recorded 156 wins despite also having its highest loss count (113), a
-        product of the long Ashes rivalry. Against Bangladesh and Zimbabwe, Australia
-        has remained almost undefeated. Data sourced from ESPNcricinfo Statsguru.</p>
-      </div>
+        <div id="diverging_opp"></div>
+        <div>
+            <h2>Who Australia beats — and who fights back</h2>
+            <p>This diverging bar chart compares Australia's all-time Test wins and
+            losses against each opponent — wins extend right, losses left. It highlights
+            Australia's overall dominance, particularly against England, where Australia
+            has recorded 156 wins despite also having its highest loss count (113), a
+            product of the long Ashes rivalry. Against Bangladesh and Zimbabwe, Australia
+            has remained almost undefeated. Data sourced from ESPNcricinfo Statsguru.</p>
+        </div>
     </div>
-    
+
     <div class="section">
         <h2>A global win rate</h2>
-        <p>The map shades each Test nation by the share of matches Australia has won against them.
-        The colour deepens against sides Australia has historically controlled: 
-        NewZealand and Sri Lanka sit among the darkest, with win rates above 54%. England,
-        the oldest and most-played rival, holds Australia closest at around 43% — proof
-        that the Ashes remains cricket's most even contest. India, too, has emerged as
-        a genuine modern challenger, the only major side against whom Australia wins            
-        fewer than half its Tests.</p>
+        <p>The map shades each Test nation by the share of matches Australia has won
+        against them. The colour deepens against sides Australia has historically
+        controlled: New Zealand and Sri Lanka sit among the darkest, with win rates
+        above 54%. England, the oldest and most-played rival, holds Australia closest
+        at around 43% — proof that the Ashes remains cricket's most even contest.
+        India, too, has emerged as a genuine modern challenger, the only major side
+        against whom Australia wins fewer than half its Tests.</p>
         <div id="choropleth_opp"></div>
     </div>
-    
 
-<div class="footer">
-    <p>Data sources:
-        <a href="https://stats.espncricinfo.com">ESPNcricinfo Statsguru</a> ·
-        <a href="https://en.wikipedia.org/wiki/List_of_Australia_Test_cricket_records">Wikipedia — Australia Test records</a> ·
-        <a href="https://www.naturalearthdata.com">Natural Earth</a>
-    </p>
-    <p>Author: Mustafa Imran · FIT2179 Data Visualisation 2</p>
-</div>
-    
+    <div class="footer">
+        <p>Data sources:
+            <a href="https://stats.espncricinfo.com">ESPNcricinfo Statsguru</a> ·
+            <a href="https://en.wikipedia.org/wiki/List_of_Australia_Test_cricket_records">Wikipedia — Australia Test records</a> ·
+            <a href="https://www.naturalearthdata.com">Natural Earth</a>
+        </p>
+        <p>Author: Mustafa Imran · FIT2179 Data Visualisation 2 · Monash University · Semester 1, 2026</p>
+        <p style="font-size:0.85rem;font-style:italic;color:#888;">Generative AI (Claude) assisted
+        with code structure and grammar; all data manually sourced from the references above.</p>
+    </div>
 
     <script src="vega_lite_vis.js"></script>
 </body>
