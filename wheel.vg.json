@@ -15,7 +15,7 @@
       "encoding": {
         "theta": {"field": "opponent", "type": "nominal", "sort": {"field": "won", "order": "descending"}, "title": null},
         "radius": {"field": "won", "type": "quantitative", "scale": {"zero": true, "rangeMin": 55}, "title": "Wins"},
-        "color": {"field": "won", "type": "quantitative", "title": "Test wins", "scale": {"scheme": "greens"}, "legend": {"orient": "right", "gradientLength": 120}},
+        "color": {"field": "won", "type": "quantitative", "title": "Test wins", "scale": {"scheme": "oranges"}, "legend": {"orient": "right", "gradientLength": 120}},
         "tooltip": [
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Wins"},
@@ -42,7 +42,7 @@
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 26, "fontWeight": "bold", "color": "#15462b", "font": "Barlow Condensed, sans-serif", "radius": 0},
+      "mark": {"type": "text", "fontSize": 26, "fontWeight": "bold", "color": "#b5471f", "font": "Barlow Condensed, sans-serif", "radius": 0},
       "encoding": {"text": {"value": "425"}}
     },
     {
