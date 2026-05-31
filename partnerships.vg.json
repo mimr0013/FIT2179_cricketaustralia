@@ -6,7 +6,7 @@
     "anchor": "start", "font": "Barlow Condensed, sans-serif", "fontSize": 19, "fontWeight": 600,
     "subtitleFont": "Spectral, Georgia, serif", "subtitleFontSize": 12, "subtitleColor": "#5a6b5d", "subtitlePadding": 6, "offset": 14
   },
-  "width": 560,
+  "width": 550,
   "height": 300,
   "data": {"url": "partnerships_custom.csv", "format": {"type": "csv"}},
   "encoding": {
