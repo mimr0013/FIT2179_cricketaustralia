@@ -76,11 +76,62 @@
       "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 9,
         "fontWeight": "bold",
         "color": "#20242e",
         "stroke": "#fffdf8",
-        "strokeWidth": 0.4
+        "strokeWidth": 2,
+        "dy": -8
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "opponent"}
+      }
+    },
+
+    {
+      "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#20242e",
+        "dy": -8
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "opponent"}
+      }
+    },
+
+    {
+      "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#15462b",
+        "stroke": "#fffdf8",
+        "strokeWidth": 2,
+        "dy": 5
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "win_pct", "type": "quantitative", "format": ".0f"}
+      }
+    },
+
+    {
+      "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#15462b",
+        "dy": 5
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
