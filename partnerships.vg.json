@@ -17,7 +17,7 @@
     {
       "mark": {"type": "bar", "cornerRadius": 4, "height": 22},
       "encoding": {
-        "color": {"field": "has_bradman", "type": "nominal", "title": "Featuring Bradman", "scale": {"domain": ["Yes", "No"], "range": ["#e2a228", "#7a4a78"]}, "legend": {"orient": "bottom-right", "labelFont": "Spectral, Georgia, serif", "titleFont": "Barlow Condensed, sans-serif"}},
+        "color": {"field": "has_bradman", "type": "nominal", "title": "Featuring Bradman", "scale": {"domain": ["Yes", "No"], "range": ["#e2a228", "#7a4a78"]}, "legend": {"orient": "top", "labelFont": "Spectral, Georgia, serif", "titleFont": "Barlow Condensed, sans-serif"}},
         "tooltip": [
           {"field": "batsman_1", "title": "Batsman 1"},
           {"field": "batsman_2", "title": "Batsman 2"},
