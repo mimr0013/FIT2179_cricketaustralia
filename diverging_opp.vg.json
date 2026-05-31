@@ -1,28 +1,79 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
   "title": {
     "text": "Who Australia Beats and Who Fights Back",
     "subtitle": "Wins right versus losses left against each Test nation",
-    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#565b66"
   },
-  "width": "container", "height": 360,
-  "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+
+  "width": "container",
+  "height": 360,
+
+  "data": {
+    "url": "results_by_opp.csv",
+    "format": {"type": "csv"}
+  },
+
   "transform": [
     {"calculate": "datum.won", "as": "wins_pos"},
     {"calculate": "-datum.lost", "as": "losses_neg"},
     {"fold": ["wins_pos", "losses_neg"], "as": ["result", "value"]},
-    {"calculate": "datum.result === 'wins_pos' ? 'Wins' : 'Losses'", "as": "outcome"},
+    {
+      "calculate": "datum.result === 'wins_pos' ? 'Wins' : 'Losses'",
+      "as": "outcome"
+    },
     {"calculate": "abs(datum.value)", "as": "label_value"}
   ],
+
   "encoding": {
-    "y": {"field": "opponent", "type": "nominal", "title": null, "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"]},
-    "x": {"field": "value", "type": "quantitative", "title": "Losses - matches - Wins", "axis": {"labelExpr": "abs(datum.value)"}}
+    "y": {
+      "field": "opponent",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "England",
+        "West Indies",
+        "South Africa",
+        "India",
+        "Pakistan",
+        "New Zealand",
+        "Sri Lanka",
+        "Bangladesh",
+        "Zimbabwe"
+      ]
+    },
+
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Losses ← Matches → Wins",
+      "axis": {
+        "labelExpr": "abs(datum.value)"
+      }
+    }
   },
+
   "layer": [
+
     {
-      "mark": {"type": "bar", "cornerRadius": 2},
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 2
+      },
       "encoding": {
-        "color": {"field": "outcome", "type": "nominal", "title": null, "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}},
+        "color": {
+          "field": "outcome",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Wins", "Losses"],
+            "range": ["#15462b", "#c8553d"]
+          }
+        },
         "tooltip": [
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Won"},
@@ -31,29 +82,132 @@
         ]
       }
     },
+
     {
-      "transform": [{"filter": "datum.value >= 0"}],
-      "mark": {"type": "text", "align": "left", "dx": 4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
-      "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
-    },
-    {
-      "transform": [{"filter": "datum.value < 0"}],
-      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
-      "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
-    },
-    {
-      "data": {"values": [
-        {"opponent": "England", "note": "oldest rivalry"},
-        {"opponent": "India", "note": "toughest foe"},
-        {"opponent": "West Indies", "note": "most beaten"}
-      ]},
-      "mark": {"type": "text", "align": "left", "dx": 45, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#15462b"},
+      "transform": [
+        {"filter": "datum.value >= 0"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#20242e"
+      },
       "encoding": {
-        "y": {"field": "opponent", "type": "nominal", "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"]},
-        "x": {"datum": 0, "type": "quantitative"},
-        "text": {"field": "note"}
+        "text": {
+          "field": "label_value",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.value < 0"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#20242e"
+      },
+      "encoding": {
+        "text": {
+          "field": "label_value",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "opponent": "England",
+            "note": "Historic Ashes rivalry"
+          },
+          {
+            "opponent": "India",
+            "note": "Australia's toughest modern rival"
+          },
+          {
+            "opponent": "West Indies",
+            "note": "Largest win surplus"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 50,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "color": "#15462b"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "opponent",
+          "type": "nominal",
+          "sort": [
+            "England",
+            "West Indies",
+            "South Africa",
+            "India",
+            "Pakistan",
+            "New Zealand",
+            "Sri Lanka",
+            "Bangladesh",
+            "Zimbabwe"
+          ]
+        },
+        "x": {
+          "datum": 0
+        },
+        "text": {
+          "field": "note"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0,
+            "y": "South Africa",
+            "label": "Australia dominates most opponents, but England and India remain its strongest challengers."
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "align": "center",
+        "dy": -110,
+        "color": "#20242e"
+      },
+
+      "encoding": {
+        "x": {"field": "x"},
+        "y": {"field": "y"},
+        "text": {"field": "label"}
       }
     }
   ],
-  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
+
+  "config": {
+    "font": "Spectral, Georgia, serif",
+    "view": {
+      "stroke": null
+    }
+  }
 }
