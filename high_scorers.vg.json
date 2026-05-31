@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Monumental Innings",
+    "subtitle": "Australia's five highest individual Test scores. Stars mark not-out knocks; the bar shows how far past a double-century each player went.",
+    "anchor": "start", "font": "Barlow Condensed, sans-serif", "fontSize": 19, "fontWeight": 600,
+    "subtitleFont": "Spectral, Georgia, serif", "subtitleFontSize": 12, "subtitleColor": "#5a6b5d", "subtitlePadding": 6, "offset": 14
+  },
+  "width": 560,
+  "height": 300,
+  "data": {"url": "top_run_scorers.csv", "format": {"type": "csv"}},
+  "transform": [
+    {"calculate": "datum.player + '  (vs ' + datum.opposition + ', ' + datum.city + ')'", "as": "label"},
+    {"calculate": "datum.not_out == 1 ? 'Not out' : 'Out'", "as": "status"}
+  ],
+  "encoding": {
+    "y": {"field": "label", "type": "nominal", "sort": "-x", "axis": {"title": null, "labelFontSize": 10, "labelColor": "#20242e", "labelFont": "Spectral, Georgia, serif"}},
+    "x": {"field": "runs", "type": "quantitative", "scale": {"domain": [200, 400]}, "axis": {"title": "Runs scored (from 200)", "titleFont": "Barlow Condensed, sans-serif", "titleFontSize": 13, "labelColor": "#4a564c", "grid": false}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#cbd2c5", "strokeWidth": 2.5},
+      "encoding": {"x": {"datum": 200}, "x2": {"field": "runs"}}
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 320, "stroke": "#fffdf8", "strokeWidth": 1.5},
+      "encoding": {
+        "shape": {"field": "status", "type": "nominal", "title": null, "scale": {"domain": ["Not out", "Out"], "range": ["triangle-up", "circle"]}, "legend": {"orient": "bottom-right", "labelFont": "Spectral, Georgia, serif"}},
+        "color": {"field": "status", "type": "nominal", "scale": {"domain": ["Not out", "Out"], "range": ["#e2a228", "#1f6b3f"]}},
+        "tooltip": [{"field": "player", "title": "Player"}, {"field": "runs", "title": "Score"}, {"field": "status", "title": "Status"}, {"field": "opposition", "title": "Opponent"}, {"field": "venue", "title": "Venue"}, {"field": "date", "title": "Date"}]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 14, "fontSize": 12, "fontWeight": "bold", "color": "#20242e", "font": "Barlow Condensed, sans-serif"},
+      "encoding": {"x": {"field": "runs", "type": "quantitative"}, "text": {"field": "runs", "type": "quantitative"}}
+    }
+  ],
+  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}, "axis": {"domainColor": "#cbd2c5", "tickColor": "#cbd2c5"}}
+}
