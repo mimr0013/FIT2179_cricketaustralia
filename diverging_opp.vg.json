@@ -5,103 +5,42 @@
     "subtitle": "Wins (right) versus losses (left) against each Test nation, all-time",
     "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
   },
-  {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "A Century of Captains",
-    "subtitle": "Each bar is a captain's tenure, placed in time and coloured by win rate. Only captains with five or more Tests shown.",
-    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
-  },
-  "width": 800,
-  "height": 460,
-  "data": {"url": "captains.csv", "format": {"type": "csv"}},
-  "transform": [
-    {"calculate": "toNumber(slice(datum.span, 0, 4))", "as": "start_year"},
-    {"calculate": "toNumber(slice(datum.span, 5, 9))", "as": "end_year"},
-    {"calculate": "datum.end_year == datum.start_year ? datum.end_year + 1 : datum.end_year", "as": "end_plot"},
-    {"filter": "datum.matches >= 5"}
-  ],
-  "encoding": {
-    "y": {
-      "field": "captain", "type": "nominal", "title": null,
-      "sort": {"field": "start_year"},
-      "axis": {"labelFontSize": 10}
-    }
-  },
-  "layer": [
-    {
-      "mark": {"type": "bar", "height": 11, "cornerRadius": 3},
-      "encoding": {
-        "x": {
-          "field": "start_year", "type": "quantitative",
-          "scale": {"domain": [1875, 2030]},
-          "axis": {"title": null, "format": "d", "grid": true, "tickCount": 8}
-        },
-        "x2": {"field": "end_plot"},
-        "color": {
-          "field": "win_pct", "type": "quantitative", "title": "Win %",
-          "scale": {"scheme": "yellowgreen", "domain": [0, 75]},
-          "legend": {"orient": "top-right", "gradientLength": 100}
-        },
-        "tooltip": [
-          {"field": "captain", "title": "Captain"},
-          {"field": "span", "title": "Tenure"},
-          {"field": "matches", "title": "Tests"},
-          {"field": "won", "title": "Won"},
-          {"field": "lost", "title": "Lost"},
-          {"field": "win_pct", "title": "Win %"}
-        ]
-      }
-    },
-    {
-      "transform": [{"filter": "datum.win_pct >= 60"}],
-      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 9, "fontWeight": "bold", "color": "#15462b"},
-      "encoding": {
-        "x": {"field": "end_plot", "type": "quantitative"},
-        "text": {"field": "win_pct", "type": "quantitative", "format": ".0f"}
-      }
-    }
-  ],
-  "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
-}
-,
-  "height": 320,
+  "width": "container",
+  "height": 360,
   "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
   "transform": [
     {"calculate": "datum.won", "as": "wins_pos"},
     {"calculate": "-datum.lost", "as": "losses_neg"},
     {"fold": ["wins_pos", "losses_neg"], "as": ["result", "value"]},
-    {"calculate": "datum.result === 'wins_pos' ? 'Wins' : 'Losses'", "as": "outcome"}
+    {"calculate": "datum.result === 'wins_pos' ? 'Wins' : 'Losses'", "as": "outcome"},
+    {"calculate": "abs(datum.value)", "as": "label_value"}
   ],
   "encoding": {
-    "y": {
-      "field": "opponent", "type": "nominal", "title": null,
-      "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"],
-      "axis": {"labelFontSize": 12}
-    },
-    "x": {
-      "field": "value", "type": "quantitative",
-      "title": "Losses  ←    matches    →  Wins",
-      "axis": {"labelExpr": "abs(datum.value)"}
-    },
-    "color": {
-      "field": "outcome", "type": "nominal", "title": null,
-      "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}
-    }
+    "y": {"field": "opponent", "type": "nominal", "title": null, "sort": ["England", "West Indies", "South Africa", "India", "Pakistan", "New Zealand", "Sri Lanka", "Bangladesh", "Zimbabwe"]},
+    "x": {"field": "value", "type": "quantitative", "title": "Losses  ←    matches    →  Wins", "axis": {"labelExpr": "abs(datum.value)"}}
   },
   "layer": [
     {
       "mark": {"type": "bar", "cornerRadius": 2},
       "encoding": {
+        "color": {"field": "outcome", "type": "nominal", "title": null, "scale": {"domain": ["Wins", "Losses"], "range": ["#15462b", "#c8553d"]}},
         "tooltip": [
           {"field": "opponent", "title": "Opponent"},
           {"field": "won", "title": "Won"},
           {"field": "lost", "title": "Lost"},
-          {"field": "draw", "title": "Drawn"},
-          {"field": "matches", "title": "Played"},
-          {"field": "win_pct", "title": "Win %"}
+          {"field": "matches", "title": "Played"}
         ]
       }
+    },
+    {
+      "transform": [{"filter": "datum.value >= 0"}],
+      "mark": {"type": "text", "align": "left", "dx": 4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
+      "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
+    },
+    {
+      "transform": [{"filter": "datum.value < 0"}],
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 9, "fontWeight": "bold", "color": "#20242e"},
+      "encoding": {"text": {"field": "label_value", "type": "quantitative"}}
     }
   ],
   "config": {"font": "Spectral, Georgia, serif", "view": {"stroke": null}}
