@@ -1,21 +1,39 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
   "title": {
     "text": "A Global Win Rate",
-    "subtitle": "Share of Tests Australia has won against each nation. Deeper colour = greater dominance.",
-    "anchor": "start", "fontSize": 16, "subtitleFontSize": 12, "subtitleColor": "#565b66"
+    "subtitle": "Win % against each nation. Numbers show the share of Tests Australia has won.",
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#565b66"
   },
+
   "width": 700,
-  "height": 420,
-  "projection": {"type": "equalEarth"},
+  "height": 380,
+
+  "projection": {
+    "type": "equalEarth",
+    "scale": 140,
+    "translate": [320, 230]
+  },
+
   "layer": [
+
     {
       "data": {
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      "mark": {"type": "geoshape", "fill": "#ece4d3", "stroke": "#fffdf8", "strokeWidth": 0.5}
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece4d3",
+        "stroke": "#fffdf8",
+        "strokeWidth": 0.5
+      }
     },
+
     {
       "data": {
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
@@ -27,15 +45,21 @@
           "from": {
             "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
             "key": "map_name",
-            "fields": ["win_pct", "won", "lost", "draw", "matches", "opponent"]
+            "fields": ["win_pct", "won", "lost", "matches", "opponent"]
           }
         },
         {"filter": "datum.win_pct != null"}
       ],
-      "mark": {"type": "geoshape", "stroke": "#fffdf8", "strokeWidth": 0.6},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fffdf8",
+        "strokeWidth": 0.6
+      },
       "encoding": {
         "color": {
-          "field": "win_pct", "type": "quantitative", "title": "Win %",
+          "field": "win_pct",
+          "type": "quantitative",
+          "title": "Win %",
           "scale": {"scheme": "teals", "domain": [40, 100]},
           "legend": {"orient": "bottom-left"}
         },
@@ -43,11 +67,31 @@
           {"field": "opponent", "title": "Opponent"},
           {"field": "win_pct", "title": "Win %"},
           {"field": "won", "title": "Won"},
-          {"field": "lost", "title": "Lost"},
-          {"field": "matches", "title": "Played"}
+          {"field": "lost", "title": "Lost"}
         ]
+      }
+    },
+
+    {
+      "data": {"url": "results_by_opp.csv", "format": {"type": "csv"}},
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#20242e",
+        "stroke": "#fffdf8",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "win_pct", "type": "quantitative", "format": ".0f"}
       }
     }
   ],
-  "config": {"view": {"stroke": null}, "font": "Spectral, Georgia, serif"}
+
+  "config": {
+    "view": {"stroke": null},
+    "font": "Spectral, Georgia, serif"
+  }
 }
