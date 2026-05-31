@@ -1,8 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The Wheel of Victory",
-    "subtitle": "Australia's Test wins against each opponent. Each wedge is one nation; the arc's reach and colour show how many Tests Australia has won there.",
     "anchor": "start", "font": "Barlow Condensed, sans-serif", "fontSize": 19, "fontWeight": 600,
     "subtitleFont": "Spectral, Georgia, serif", "subtitleFontSize": 12, "subtitleColor": "#5a6b5d", "subtitlePadding": 6, "offset": 14
   },
