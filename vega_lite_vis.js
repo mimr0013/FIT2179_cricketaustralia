@@ -33,3 +33,7 @@ vegaEmbed("#partnerships", vg_8).then(function(result) {
 var vg_9 = "batting_extremes.vg.json";
 vegaEmbed("#batting_extremes", vg_9).then(function(result) {
 }).catch(console.error);
+
+var vg_10 = "wheel.vg.json";
+vegaEmbed("#wheel", vg_10).then(function(result) {
+}).catch(console.error);
